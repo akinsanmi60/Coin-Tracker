@@ -74,7 +74,7 @@ const Cointable = () => {
             <Table aria-label="simple table" >
               <TableHead style={{ backgroundColor: "#EEBC1D" }}>
                 <TableRow>
-                  {["Coin", "Price", "24h Change", "Market Cap"].map((head) => (
+                  {["Rank","Coin", "Price", "24h Change", "Market Cap"].map((head) => (
                     <TableCell
                       style={{
                         color: "black",
@@ -82,7 +82,7 @@ const Cointable = () => {
                         fontFamily: "Montserrat",
                       }}
                       key={head}
-                      align={head === "Coin" ? "left" : "right"}
+                      align={head ==="Coin" ? "left" : "right"} 
                     >
                       {head}
                     </TableCell>
@@ -94,7 +94,10 @@ const Cointable = () => {
                   <>
                     <TableRow
                       onClick={() => navigate(`/coins/${coin.id}`)}
-                      key={coin.id}>
+                        key={coin.id}>
+                        <TableCell align="left">
+                          {coin.market_cap_rank}
+                        </TableCell>
                       <TableCell
                         component="th"
                         scope="row"
@@ -132,11 +135,9 @@ const Cointable = () => {
                       <TableCell
                           align="right"
                           style={{
-                            color: profit ? "rgb(14, 203, 129)" : "red",
                             fontWeight: 500,
                           }}
                         >
-                          {profit && "+"}
                           {coin.price_change_percentage_24h.toFixed(2)}%
                         </TableCell>
                       <TableCell align="right">
@@ -148,15 +149,25 @@ const Cointable = () => {
                       </TableCell>
                     </TableRow>
                   </>
-
-
-
-
                 )}
               </TableBody>
             </Table>
           )}
         </TableContainer>
+         <Pagination
+          count={handleSearch()?.length / 10}
+          style={{
+            padding: 20,
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            color: "gold"
+          }}
+          onChange={(_, value) => {
+            setPage(value);
+            window.scroll(0, 450);
+          }}
+        />
       </Container>
     </ThemeProvider>
   )
