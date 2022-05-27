@@ -7,12 +7,12 @@ export const Wrapper = styled.div`
   overflow: hidden;
 `;
 export const Card = styled.div`
- .carouselItem{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      cursor: pointer;
-      text-transform: uppercase;
-    },
+ .carouselItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  },
 
   `;

@@ -6,15 +6,17 @@ import Typography from "@mui/material/Typography";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { MenuItem } from "@mui/material";
 import { CurrencyState } from "../utils/ValueContext";
+import { useNavigate } from "react-router-dom";
 
 export const Header = () => {
   const { currency, setCurrency } = CurrencyState();
+  const navigate = useNavigate();
 
   const handleChange = (event: SelectChangeEvent) => {
     setCurrency(event.target.value as string);
   };
   return (
-    <AppBar color="transparent" position="static">
+    <AppBar  position="sticky">
       <Container>
         <Toolbar>
           <Typography
@@ -24,8 +26,9 @@ export const Header = () => {
               fontFamily: "Montserrat",
               fontWeight: "bold",
               flex: 1,
+              cursor: "pointer"
             }}
-          >
+            onClick={() => navigate("/")}          >
             Rebirth Updater
           </Typography>
           <Select

@@ -27,3 +27,4 @@ export type TrendingProp = {
   total_supply: number;
   total_volume: number;
 };
+

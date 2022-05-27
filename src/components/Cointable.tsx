@@ -9,9 +9,8 @@ import Typography from "@mui/material/Typography";
 import { CoinList } from "../utils/apis";
 import { CurrencyState } from "../utils/ValueContext";
 import { TrendingProp } from "./type";
-import { colors, LinearProgress, TableCell, TableContainer, TableHead, TableRow, TextField, createTheme, ThemeProvider, TableBody, Table, Paper } from "@mui/material";
+import { colors, LinearProgress, TableCell, TableContainer, TableHead, TableRow, TextField, createTheme, ThemeProvider, TableBody, Table, Paper, styled } from "@mui/material";
 import { numberWithCommas } from "../utils/helpers";
-import { BoxWrapper } from "./Coinsytle";
 
 const Cointable = () => {
   const [coins, setCoins] = useState<TrendingProp[]>([]);
@@ -37,11 +36,17 @@ const Cointable = () => {
     palette: {
       primary: {
         main: colors.common["white"],
+        contrastText: "white",
       },
-
     }
   });
 
+  const StyledTextField = styled(TextField)(({ theme }) => ({
+  color: theme.palette.primary.contrastText,
+  borderBottomColor: theme.palette.primary.main,
+  borderRadius: theme.shape.borderRadius,
+   
+}));
 
   const handleSearch = () => {
     return coins.filter(
@@ -55,14 +60,13 @@ const Cointable = () => {
   return (
     <ThemeProvider theme={darkTheme}>
       <Container style={{ textAlign: "center" }}>
-        <BoxWrapper>
           <Typography
             variant="h4"
             style={{ margin: 18, fontFamily: "Montserrat" }}
           >
             Cryptocurrency Prices by Market Cap
           </Typography>
-          <TextField
+          <StyledTextField
             label="Search For a Crypto Currency.."
             variant="outlined"
             sx={{ width: "85%", marginBottom: 2, }}
@@ -154,9 +158,7 @@ const Cointable = () => {
                           color: "white"
                         }}>
                           {symbol}{" "}
-                          {numberWithCommas(
-                            coin.market_cap.toString().slice(0, -6)
-                          )}
+                          {coin.market_cap.toLocaleString().slice(0, -6)}
                           M
                         </TableCell>
                       </TableRow>
@@ -181,7 +183,6 @@ const Cointable = () => {
             }}
           />
 
-        </BoxWrapper>
       </Container>
     </ThemeProvider>
   )
