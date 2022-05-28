@@ -27,7 +27,18 @@ const CoinPage = () => {
       refetchOnWindowFocus: false,
     },
   );
-
+  const { data} = useQuery(
+    "trendingcoin",
+    () =>
+      axios.get('https://api.coingecko.com/api/v3/search/trending'),
+    // {
+    //   onSuccess(e) {
+    // setCoin(e?.data);
+    //   },
+    //   refetchOnWindowFocus: false,
+    // },
+  );
+console.log("++++++++", data)
   if (!coin) return <LinearProgress style={{ backgroundColor: "gold" }} />;
   return (
     <Container>

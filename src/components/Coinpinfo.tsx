@@ -117,6 +117,7 @@ const Coinpage = ({ coin }: CoinProp) => {
                     setflag(false);
                   }}
                   selected={day.value === days}
+                  
                 >
                   {day.label}
                 </Button>
