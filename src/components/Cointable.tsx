@@ -9,7 +9,7 @@ import Typography from "@mui/material/Typography";
 import { CoinList } from "../utils/apis";
 import { CurrencyState } from "../utils/ValueContext";
 import { TrendingProp } from "./type";
-import { colors, LinearProgress, TableCell, TableContainer, TableHead, TableRow, TextField, createTheme, ThemeProvider, TableBody, Table, Paper, styled } from "@mui/material";
+import { colors, LinearProgress, TableCell, TableContainer, TableHead, TableRow, createTheme, ThemeProvider, TableBody, Table, Paper} from "@mui/material";
 import { numberWithCommas } from "../utils/helpers";
 import { Textinput } from "./style";
 
@@ -74,7 +74,7 @@ const Cointable = () => {
               <Table aria-label="simple table" >
                 <TableHead style={{ backgroundColor: "#EEBC1D" }}>
                   <TableRow>
-                    {["Rank", "Coin", "Price", "24h Change", "Market Cap"].map((head) => (
+                    {["Coin", "Price", "24h Change", "Market Cap"].map((head) => (
                       <TableCell
                         style={{
                           color: "black",
@@ -96,11 +96,6 @@ const Cointable = () => {
                         onClick={() => navigate(`/coins/${coin.id}`)}
                         key={coin.id}
                         sx={{ backgroundColor: "#16171a", color: "white" }}>
-                        <TableCell align="left"   style={{
-                            color: "white"
-                        }}>
-                          {coin.market_cap_rank}
-                        </TableCell>
                         <TableCell
                           component="th"
                           scope="row"
