@@ -7,9 +7,6 @@ import { numberWithCommas } from "../../../utils/helpers";
 import { CurrencyState } from "../../../utils/ValueContext";
 import { Card, Wrapper } from "./style";
 import { TrendingProp } from "../../type";
-import { Splide, SplideSlide } from '@splidejs/react-splide';
-import '@splidejs/react-splide/css';
-
 const Carousel = () => {
   const [trending, setTrending] = useState<TrendingProp[]>([]);
   const { currency, symbol } = CurrencyState();
@@ -26,25 +23,9 @@ const Carousel = () => {
 
   return (
     <Wrapper>
-      <Splide
-        options={{
-          perPage: 4,
-          pagination: false,
-          drag: "free",
-          arrows: true,
-          breakpoints: {
-            1200: {},
-            800: { perPage: 3 },
-            640: {},
-            425: { perPage: 2 }
-          },
-         
-        }}>
-
         {trending.map(coin => {
           let profit = coin?.price_change_percentage_24h >= 0;
           return (
-            <SplideSlide>
               <Card>
                 <div key={coin.symbol} onClick={() => navigate(`/coins/${coin.id}`)} className="carouselItem">
                   <img
@@ -71,10 +52,8 @@ const Carousel = () => {
                   </span>
                 </div>
               </Card>
-            </SplideSlide>
           );
         })}
-      </Splide>
 
 
     </Wrapper>

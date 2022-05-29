@@ -2,7 +2,7 @@ import React from "react";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { BannerWrapper } from "./style";
-import Carousel from "./component/Carousel";
+// import Carousel from "./component/Carousel";
 
 const banner = () => {
   return (
@@ -30,7 +30,7 @@ const banner = () => {
             Get all the Info regarding your favorite Crypto Currency
           </Typography>
         </div>
-        <Carousel />
+        {/* <Carousel /> */}
       </Container>
     </BannerWrapper>
   );
