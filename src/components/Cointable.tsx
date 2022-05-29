@@ -11,9 +11,11 @@ import { CurrencyState } from "../utils/ValueContext";
 import { TrendingProp } from "./type";
 import { colors, LinearProgress, TableCell, TableContainer, TableHead, TableRow, TextField, createTheme, ThemeProvider, TableBody, Table, Paper, styled } from "@mui/material";
 import { numberWithCommas } from "../utils/helpers";
+import { Textinput } from "./style";
+
 
 const Cointable = () => {
-  const [coins, setCoins] = useState<TrendingProp[]>([]);
+  const [coins, setCoins] = useState<TrendingProp[] >([]);
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
@@ -41,12 +43,6 @@ const Cointable = () => {
     }
   });
 
-  const StyledTextField = styled(TextField)(({ theme }) => ({
-  color: theme.palette.primary.contrastText,
-  borderBottomColor: theme.palette.primary.main,
-  borderRadius: theme.shape.borderRadius,
-   
-}));
 
   const handleSearch = () => {
     return coins.filter(
@@ -66,14 +62,12 @@ const Cointable = () => {
           >
             Cryptocurrency Prices by Market Cap
           </Typography>
-          <StyledTextField
-            label="Search For a Crypto Currency.."
-            variant="outlined"
-            sx={{ width: "85%", marginBottom: 2, }}
-            onChange={(e) => setSearch(e.target.value)}
-            
-          />
-          <TableContainer component={Paper}>
+        <Textinput
+          placeholder="Search For a Crypto Currency.."
+          onChange={(e) => setSearch(e.target.value)}
+          value={search}
+        />
+          <TableContainer component={Paper} sx={{marginTop: 2}}>
             {loading ? (
               <LinearProgress style={{ backgroundColor: "gold" }} />
             ) : (
@@ -167,7 +161,8 @@ const Cointable = () => {
                 </TableBody>
               </Table>
             )}
-          </TableContainer>
+        </TableContainer>
+
           <Pagination
             count={handleSearch()?.length / 10}
             style={{
@@ -175,8 +170,9 @@ const Cointable = () => {
               width: "100%",
               display: "flex",
               justifyContent: "center",
-              color: "white"
+              backgroundColor: "#EEBC1D",
             }}
+            className="pagination"
             onChange={(_, value) => {
               setPage(value);
               window.scroll(0, 450);
@@ -189,3 +185,4 @@ const Cointable = () => {
 };
 
 export default Cointable;
+

@@ -55,3 +55,20 @@ color: black;
 width: 20%;
       //   margin: 5,
 `
+
+export const Textinput = styled.input`
+font: inherit;
+    letter-spacing: inherit;
+    color: currentColor;
+    padding: 4px 0 5px;
+    border: 2px solid white;
+    border-radius: 9px;
+    box-sizing: content-box;
+    background: none;
+    height: 0.9rem;
+    margin: 0 auto;
+    display: block;
+    min-width: 0;
+    width: 70%;
+    padding: 16.5px 14px;
+`
