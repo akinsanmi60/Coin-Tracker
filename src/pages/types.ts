@@ -1,6 +1,9 @@
 export type CPProp = {
     [x: string]: number
      }
+export type MCProp = {
+    [x: string]: number
+     }
 export type HistoricalProp = {
   block_time_in_minutes: number
   categories: [string]
@@ -26,7 +29,8 @@ export type HistoricalProp = {
   liquidity_score: number
     market_cap_rank: string
     market_data: {
-        current_price: CPProp
+      current_price: CPProp,
+      market_cap:  MCProp
     }
   name: string
   symbol: string

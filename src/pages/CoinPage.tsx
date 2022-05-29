@@ -27,18 +27,7 @@ const CoinPage = () => {
       refetchOnWindowFocus: false,
     },
   );
-  const { data} = useQuery(
-    "trendingcoin",
-    () =>
-      axios.get('https://api.coingecko.com/api/v3/search/trending'),
-    // {
-    //   onSuccess(e) {
-    // setCoin(e?.data);
-    //   },
-    //   refetchOnWindowFocus: false,
-    // },
-  );
-console.log("++++++++", data)
+
   if (!coin) return <LinearProgress style={{ backgroundColor: "gold" }} />;
   return (
     <Container>
@@ -74,12 +63,11 @@ console.log("++++++++", data)
             </Typography>
           </span>
           <span className="rank">
-            <Typography variant="h5" className='heading'>
+            <Typography  className='heading'>
               Current Price:
             </Typography>
             &nbsp; &nbsp;
             <Typography
-              variant="h5"
               style={{
                 fontFamily: "Montserrat",
               }}
@@ -88,6 +76,25 @@ console.log("++++++++", data)
               {
                 coin?.market_data?.current_price?.[currency.toLowerCase()].toLocaleString()
               }
+            </Typography>
+          </span>
+            <span style={{ display: "flex" }}>
+            <Typography className="heading">
+              Market Cap:
+            </Typography>
+            &nbsp; &nbsp;
+            <Typography
+              style={{
+                fontFamily: "Montserrat",
+              }}
+            >
+              {symbol}{" "}
+              {numberWithCommas(
+                coin?.market_data?.market_cap?.[currency.toLowerCase()]
+                  .toString()
+                  .slice(0, -6)
+              )}
+              M
             </Typography>
           </span>
         </MarketData>

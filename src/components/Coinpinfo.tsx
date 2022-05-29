@@ -3,13 +3,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { HistoricalChart } from "../utils/apis";
-import SelectButton from "./Button";
 import { CurrencyState } from "../utils/ValueContext";
 import { CircularProgress, createTheme, ThemeProvider } from "@mui/material";
 import { CoinWrapper } from "./style";
 import { Line } from "react-chartjs-2";
 import { Chart as ChartJS, registerables } from "chart.js"
-import Button from "./Button";
+import ClickButton from "./Button";
 
 export const chartDays = [
   {
@@ -90,6 +89,7 @@ const Coinpage = ({ coin }: CoinProp) => {
                     data: historicData?.prices?.map((item) => item[1]),
                     label: `Price ( Past ${days} Days ) in ${currency}`,
                     borderColor: "#EEBC1D",
+                    fill: true,
                   },
                 ],
               }}
@@ -99,7 +99,9 @@ const Coinpage = ({ coin }: CoinProp) => {
                     radius: 1,
                   },
                 },
-              }}
+                }}
+                className="chartline"
+                
             />
             <div
               style={{
@@ -110,17 +112,16 @@ const Coinpage = ({ coin }: CoinProp) => {
               }}
             >
               {chartDays.map((day) => (
-                <Button
+                <ClickButton
                   key={day.value}
                   onClick={() => {
                     setDays(day.value);
                     setflag(false);
                   }}
                   selected={day.value === days}
-                  
                 >
                   {day.label}
-                </Button>
+                </ClickButton>
               ))}
             </div>
           </>

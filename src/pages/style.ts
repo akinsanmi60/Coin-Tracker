@@ -51,3 +51,33 @@ export const MarketData = styled.div`
       display: flex;
   }
 `
+
+export const ErrorWrapper = styled.div`
+  overflow: auto;
+  .error-message {
+      margin-top: 150px;
+      h1 {
+      font-size: 40px;
+      text-align: center;
+      color: gold;
+      margin-bottom: 10px;
+    }
+   .errorbtn {
+       display: flex;
+       justify-content: center;
+   }
+  }
+   @media (max-width: 900px) {
+   .error-message {
+    h1 {
+      font-size: 30px;
+      text-align: center;
+      color: gold;
+    }
+   .errorbtn {
+       display: flex;
+       justify-content: center;
+   }
+  }
+  }
+`;
